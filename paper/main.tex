@@ -44,7 +44,7 @@ Let $n\ge3$ and $1\le k\le n-1$. Put independent scores $W_e$, uniform on $[0,1]
 &LK(n,k)\text{ is connected}&\qquad&\text{if }k\ge\log n+t\log\log n\sqrt{\log n}\text{ with }t>\tfrac12,\\
 &LK(n,k)\text{ is disconnected}&&\text{if }k\le\log n+t\log\log n\sqrt{\log n}\text{ with }t<-\tfrac12,
 \end{alignat*}
-and among their open problems \cite[Section~1]{DS} they note that it is not known whether the graph is connected when $k$ lies between these two bounds, and suggest that sharper sufficient conditions could close the gap.
+and among their open problems \cite[Section~1]{DS} they note that it is not known whether the graph is connected when $k$ lies between these two bounds, and suggest that sharper sufficient conditions could close the gap. The answer below has the form of the connectivity threshold of Erd\H{o}s and R\'enyi \cite{ER}, where $G(n,(\log n+c)/n)$ is connected with probability tending to $\exp(-e^{-c})$ and isolated vertices are the last obstruction. Connectivity of the related random $k$-nearest-neighbour graphs, in which each point of a Poisson process is joined to its $k$ nearest neighbours, is studied by Balister, Bollob\'as, Sarkar and Walters \cite{BBSW}.
 
 Let $Z_n$ be the number of isolated vertices of $LK(n,k)$ and put $\lambda_n=ne^{-k}$.
 
@@ -340,6 +340,10 @@ The paper is part of the Math Brain project, whose public repository is \url{htt
 
 \begin{thebibliography}{10}
 
+\bibitem{BBSW}
+P.~Balister, B.~Bollob\'as, A.~Sarkar and M.~Walters, Connectivity of random $k$-nearest-neighbour graphs, \emph{Adv. in Appl. Probab.} \textbf{37} (2005), 1--24.
+\bibitem{ER}
+P.~Erd\H{o}s and A.~R\'enyi, On random graphs.~I, \emph{Publ. Math. Debrecen} \textbf{6} (1959), 290--297.
 \bibitem{Bil}
 P.~Billingsley, \emph{Probability and Measure}, 3rd ed., Wiley, New York, 1995.
 
