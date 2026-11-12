@@ -23,9 +23,11 @@ for k in [2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30]:
     def Q(s):
         # E(s-G)^+ = s F_k(s) - k F_{k+1}(s)
         return s * G.cdf(s) - k * stats.gamma(k + 1).cdf(s)
-    f = lambda s: math.exp(k * math.log(max(Q(s), 1e-300)) - s - math.lgamma(k + 1))
-    val, err = integrate.quad(f, 0, 2 * k + 60 * math.sqrt(k) + 60, limit=400, points=[k, 2 * k])
-    P(f"k={k:3d}  I_k*e^k = {val * math.exp(k):.8f}   (I_k*e^k - 1) = {val * math.exp(k) - 1:.3e}")
+    # integrate e^k times the integrand, so that the tolerances apply to a quantity of order one
+    f = lambda s: math.exp(k * math.log(max(Q(s), 1e-300)) - s - math.lgamma(k + 1) + k)
+    val, err = integrate.quad(f, 0, 2 * k + 60 * math.sqrt(k) + 60, limit=400, points=[k, 2 * k],
+                              epsabs=1e-13, epsrel=1e-12)
+    P(f"k={k:3d}  I_k*e^k = {val:.8f}   (I_k*e^k - 1) = {val - 1:.3e}   (quad error {err:.1e})")
 
 P("\n== 2. simulation of LK(n,k)")
 rng = np.random.default_rng(20261029)
