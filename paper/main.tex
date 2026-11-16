@@ -67,7 +67,7 @@ So the threshold is at $\log n$ with an additive window of width $O(1)$, and ins
 \]
 For large $s$ the inner integral is $\E(s-\Gamma_k)_+\approx s-k$, and $\int_k^\infty(s-k)^ke^{-s}\,ds/k!=e^{-k}$ exactly. The integrand peaks at $s\approx2k$, where $s-k$ is a good approximation, so the integral is $e^{-k}(1+o(1))$. It is the limit of the quantity $M$ of Lemma~\ref{lem:saddle}, in which the refusals at the other ends are treated as independent. The quantity $M$ is not the probability that $v$ is isolated: for $n=4$ and $k=2$, with $m=3$ and $N=2$, $M=1/21$, while $v$ is isolated with probability $1/15$. Proposition~\ref{prop:array} shows that the two agree to first order, so that the isolation probability is also $e^{-k}(1+o(1))$. At $k=\log n$ this is of order $1/n$. Every event through which several vertices interact (two of them preferring the same outside vertex, a light edge between two of the outside vertices involved) costs a further factor $(\log n)^{O(1)}/n$. Only boundedly many of them can occur at a cost comparable to $e^{-rk}$, and each removes at most a bounded number of the $rk$ refusals that isolation requires; Lemma~\ref{lem:omit} shows that removing $d$ refusals multiplies the probability by at most $(3k)^d$. This is the content of Proposition~\ref{prop:array}. Components with between $2$ and $6$ vertices are handled by the same proposition, larger components by a first-moment bound.
 
-Section~\ref{sec:one} treats one vertex, Section~\ref{sec:several} several vertices and the Poisson limit, Section~\ref{sec:comp} the components, and Section~\ref{sec:proofs} proves Theorem~\ref{thm:main} and Corollary~\ref{cor:band}. Section~\ref{sec:numerics} describes the computer checks that accompany the paper.
+Section~\ref{sec:one} treats one vertex, Section~\ref{sec:several} several vertices and the Poisson limit, Section~\ref{sec:comp} the components, and Section~\ref{sec:proofs} proves Theorem~\ref{thm:main} and Corollary~\ref{cor:band}. Section~\ref{sec:numerics} describes the computer checks that accompany the paper~\cite{code}.
 
 Throughout, $C$ is fixed, $n\to\infty$, and $k$ is an integer with $|k-\log n|\le C$; in particular $k\to\infty$ and $k^a/n\to0$ for every $a$. All $o(1)$ terms are uniform in such $k$ and in the other parameters as stated. We write $(m)_j=m(m-1)\cdots(m-j+1)$ and use the Chernoff bounds for a binomial variable $X$ with mean $\lambda$,
 \begin{equation}\label{eq:chernoff}
@@ -333,6 +333,14 @@ in the funding declaration above.
 \section*{Declaration of generative AI and AI-assisted technologies}
 The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In September 2026 OpenAI GPT models, running as research tasks of that project, proposed Theorem~\ref{thm:main}, the integral formula \eqref{eq:M}, Lemma~\ref{lem:saddle}, the treatment of components in Section~\ref{sec:comp}, and a proof of the multi-vertex estimate through a canonical deletion of interacting edges. In October 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, checked that proof, replaced its multi-vertex part by the argument of Lemma~\ref{lem:omit} and Proposition~\ref{prop:array}, wrote the computer checks of the repository~\cite{code}, and wrote the paper. In November 2026 a Codex agent (OpenAI, GPT-6.1) refereed the manuscript, checking every lemma and the numerical claims with its own programs. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
+The results rest on the work of others. The model is due to La and Kabkab~\cite{LK}. Dabirian and
+Subramanian~\cite{DS} proved the two connectivity bounds recalled in the introduction and posed the question of the
+window between them. The form of the answer, with isolated vertices as the last obstruction and a Poisson number of
+them, is that of the threshold of Erd\H{o}s and R\'enyi~\cite{ER}. These results are theirs. The new steps are the
+integral formula~\eqref{eq:M} for the refusals at one vertex, the first-order estimate for several vertices in
+Proposition~\ref{prop:array}, and the Poisson limit and connectivity probability of Theorem~\ref{thm:main} that follow
+from them.
+
 \section*{Data availability}
 No data were used. The code is available at\\ \url{https://github.com/yspennstate/bilateral-preference-connectivity-window}.
 
@@ -350,7 +358,7 @@ P.~Erd\H{o}s and A.~R\'enyi, On random graphs.~I, \emph{Publ. Math. Debrecen} \t
 P.~Billingsley, \emph{Probability and Measure}, 3rd ed., Wiley, New York, 1995.
 
 \bibitem{code}
-Y.~Shmalo, Computations for ``The connectivity window of bilateral preference random graphs'', \url{https://github.com/yspennstate/bilateral-preference-connectivity-window}, 2026.
+Y.~Shmalo, Computations for ``The connectivity window of bilateral preference random graphs'', source code repository, \url{https://github.com/yspennstate/bilateral-preference-connectivity-window}, 2026.
 
 \bibitem{DS}
 H.~Dabirian and V.~Subramanian, Connectivity of a family of bilateral preference random graphs, \emph{J. Appl. Probab.} \textbf{63} (2026), 552--579. Also arXiv:2209.05677.
